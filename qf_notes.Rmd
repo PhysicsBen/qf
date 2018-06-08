@@ -1,0 +1,12 @@
+---
+title: "Quantitative Finance Notes"
+author: "Benjamin Burch"
+output:
+  html_notebook: 
+    toc: yes
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+# Time Series
