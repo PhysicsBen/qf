@@ -10,3 +10,13 @@ output:
 ---
 
 # Time Series
+
+## Libraries
+
+* xts - time series index + matrix object; as.xts looks like a very useful function
+* zoo
+
+## Notes
+
+* Use saveRDS for zoo objects
+* zoo has read and write functions
