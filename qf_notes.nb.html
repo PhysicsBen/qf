@@ -177,7 +177,9 @@ $(document).ready(function () {
 <ul>
 <li><a href="#time-series">Time Series</a><ul>
 <li><a href="#libraries">Libraries</a></li>
-<li><a href="#notes">Notes</a></li>
+<li><a href="#notes">Notes</a><ul>
+<li><a href="#xts">xts</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </div>
@@ -190,6 +192,7 @@ $(document).ready(function () {
 <ul>
 <li>xts - time series index + matrix object; as.xts looks like a very useful function</li>
 <li>zoo</li>
+<li>PerformanceAnalytics - Econometric tools</li>
 </ul>
 </div>
 <div id="notes" class="section level2">
@@ -198,11 +201,26 @@ $(document).ready(function () {
 <li>Use saveRDS for zoo objects</li>
 <li>zoo has read and write functions</li>
 </ul>
+<div id="xts" class="section level3">
+<h3>xts</h3>
+<ul>
+<li>xts functions “first” and “last” are analogous to head and tail e.g. last(data, “5 months”)</li>
+<li>“merge” allow for database style joins</li>
+<li>ts and zoo define lag with the opposite sign of xts</li>
+<li>“lag” and “diff” functions allow for complex math</li>
+<li>to.period will give OHLC values (Open, High, Low, Close) by default</li>
+<li>“rollapply” colaculated rolling sums, means, etc.</li>
+<li>index is seconds from 1970-01-01</li>
+<li>“periodicity” - estimated stucture of timeseries data</li>
+<li>“align.time” - round to specified periodicity</li>
+<li>get weekends: index &lt;- which(.indexwday(x) == 0 | .indexwday(x) == 6)</li>
+</ul>
 <!-- rnb-text-end -->
 </div>
 </div>
+</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUXVhbnRpdGF0aXZlIEZpbmFuY2UgTm90ZXMiCmF1dGhvcjogIkJlbmphbWluIEJ1cmNoIgpvdXRwdXQ6CiAgaHRtbF9ub3RlYm9vazogCiAgICB0b2M6IHllcwogIGh0bWxfZG9jdW1lbnQ6CiAgICB0b2M6IHllcwogICAgdG9jX2Zsb2F0OiB5ZXMKLS0tCgojIFRpbWUgU2VyaWVzCgojIyBMaWJyYXJpZXMKCiogeHRzIC0gdGltZSBzZXJpZXMgaW5kZXggKyBtYXRyaXggb2JqZWN0OyBhcy54dHMgbG9va3MgbGlrZSBhIHZlcnkgdXNlZnVsIGZ1bmN0aW9uCiogem9vCgojIyBOb3RlcwoKKiBVc2Ugc2F2ZVJEUyBmb3Igem9vIG9iamVjdHMKKiB6b28gaGFzIHJlYWQgYW5kIHdyaXRlIGZ1bmN0aW9ucw==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUXVhbnRpdGF0aXZlIEZpbmFuY2UgTm90ZXMiCmF1dGhvcjogIkJlbmphbWluIEJ1cmNoIgpvdXRwdXQ6CiAgaHRtbF9ub3RlYm9vazogCiAgICB0b2M6IHllcwogIGh0bWxfZG9jdW1lbnQ6CiAgICB0b2M6IHllcwogICAgdG9jX2Zsb2F0OiB5ZXMKLS0tCgojIFRpbWUgU2VyaWVzCgojIyBMaWJyYXJpZXMKCiogeHRzIC0gdGltZSBzZXJpZXMgaW5kZXggKyBtYXRyaXggb2JqZWN0OyBhcy54dHMgbG9va3MgbGlrZSBhIHZlcnkgdXNlZnVsIGZ1bmN0aW9uCiogem9vCiogUGVyZm9ybWFuY2VBbmFseXRpY3MgLSBFY29ub21ldHJpYyB0b29scwoKIyMgTm90ZXMKCiogVXNlIHNhdmVSRFMgZm9yIHpvbyBvYmplY3RzCiogem9vIGhhcyByZWFkIGFuZCB3cml0ZSBmdW5jdGlvbnMKCiMjIyB4dHMKCiogeHRzIGZ1bmN0aW9ucyAiZmlyc3QiIGFuZCAibGFzdCIgYXJlIGFuYWxvZ291cyB0byBoZWFkIGFuZCB0YWlsIGUuZy4gbGFzdChkYXRhLCAiNSBtb250aHMiKQoqICJtZXJnZSIgYWxsb3cgZm9yIGRhdGFiYXNlIHN0eWxlIGpvaW5zCiogdHMgYW5kIHpvbyBkZWZpbmUgbGFnIHdpdGggdGhlIG9wcG9zaXRlIHNpZ24gb2YgeHRzCiogImxhZyIgYW5kICJkaWZmIiBmdW5jdGlvbnMgYWxsb3cgZm9yIGNvbXBsZXggbWF0aAoqIHRvLnBlcmlvZCB3aWxsIGdpdmUgT0hMQyB2YWx1ZXMgKE9wZW4sIEhpZ2gsIExvdywgQ2xvc2UpIGJ5IGRlZmF1bHQKKiAicm9sbGFwcGx5IiBjb2xhY3VsYXRlZCByb2xsaW5nIHN1bXMsIG1lYW5zLCBldGMuCiogaW5kZXggaXMgc2Vjb25kcyBmcm9tIDE5NzAtMDEtMDEKKiAicGVyaW9kaWNpdHkiIC0gZXN0aW1hdGVkIHN0dWN0dXJlIG9mIHRpbWVzZXJpZXMgZGF0YQoqICJhbGlnbi50aW1lIiAtIHJvdW5kIHRvIHNwZWNpZmllZCBwZXJpb2RpY2l0eQoqIGdldCB3ZWVrZW5kczogaW5kZXggPC0gd2hpY2goLmluZGV4d2RheSh4KSA9PSAwIHwgLmluZGV4d2RheSh4KSA9PSA2KQ==</div>
 
 
 

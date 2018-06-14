@@ -15,8 +15,22 @@ output:
 
 * xts - time series index + matrix object; as.xts looks like a very useful function
 * zoo
+* PerformanceAnalytics - Econometric tools
 
 ## Notes
 
 * Use saveRDS for zoo objects
 * zoo has read and write functions
+
+### xts
+
+* xts functions "first" and "last" are analogous to head and tail e.g. last(data, "5 months")
+* "merge" allow for database style joins
+* ts and zoo define lag with the opposite sign of xts
+* "lag" and "diff" functions allow for complex math
+* to.period will give OHLC values (Open, High, Low, Close) by default
+* "rollapply" colaculated rolling sums, means, etc.
+* index is seconds from 1970-01-01
+* "periodicity" - estimated stucture of timeseries data
+* "align.time" - round to specified periodicity
+* get weekends: index <- which(.indexwday(x) == 0 | .indexwday(x) == 6)
