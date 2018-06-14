@@ -47,3 +47,6 @@ data(edhec)
 edhec["199701/199706"]
 
 ```
+
+* white noise - constant mean and variance, no pattern; can use arima.sim to create white noise
+* ARIMA - Auto-regressive integrated moving average
