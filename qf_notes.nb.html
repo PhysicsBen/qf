@@ -213,14 +213,48 @@ $(document).ready(function () {
 <li>index is seconds from 1970-01-01</li>
 <li>“periodicity” - estimated stucture of timeseries data</li>
 <li>“align.time” - round to specified periodicity</li>
-<li>get weekends: index &lt;- which(.indexwday(x) == 0 | .indexwday(x) == 6)</li>
+<li><p>get weekends: index &lt;- which(.indexwday(x) == 0 | .indexwday(x) == 6)</p></li>
+<li><p>an example</p></li>
 </ul>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh4dHMpXG5saWJyYXJ5KFBlcmZvcm1hbmNlQW5hbHl0aWNzKVxuIyBtb250aGx5IHh0cyBoZWRnZSBmdW5kIGluZGV4IHJldHVybnNcbmRhdGEoZWRoZWMpXG4jIDYgbW9udGggc2xpY2VcbmVkaGVjW1wiMTk5NzAxLzE5OTcwNlwiXVxuYGBgIn0= -->
+<pre class="r"><code>library(xts)
+library(PerformanceAnalytics)
+# monthly xts hedge fund index returns
+data(edhec)
+# 6 month slice
+edhec[&quot;199701/199706&quot;]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICBDb252ZXJ0aWJsZSBBcmJpdHJhZ2UgQ1RBIEdsb2JhbCBEaXN0cmVzc2VkIFNlY3VyaXRpZXMgRW1lcmdpbmcgTWFya2V0cyBFcXVpdHkgTWFya2V0IE5ldXRyYWxcbjE5OTctMDEtMzEgICAgICAgICAgICAgICAgMC4wMTE5ICAgICAwLjAzOTMgICAgICAgICAgICAgICAgMC4wMTc4ICAgICAgICAgICAwLjA3OTEgICAgICAgICAgICAgICAgMC4wMTg5XG4xOTk3LTAyLTI4ICAgICAgICAgICAgICAgIDAuMDEyMyAgICAgMC4wMjk4ICAgICAgICAgICAgICAgIDAuMDEyMiAgICAgICAgICAgMC4wNTI1ICAgICAgICAgICAgICAgIDAuMDEwMVxuMTk5Ny0wMy0zMSAgICAgICAgICAgICAgICAwLjAwNzggICAgLTAuMDAyMSAgICAgICAgICAgICAgIC0wLjAwMTIgICAgICAgICAgLTAuMDEyMCAgICAgICAgICAgICAgICAwLjAwMTZcbjE5OTctMDQtMzAgICAgICAgICAgICAgICAgMC4wMDg2ICAgIC0wLjAxNzAgICAgICAgICAgICAgICAgMC4wMDMwICAgICAgICAgICAwLjAxMTkgICAgICAgICAgICAgICAgMC4wMTE5XG4xOTk3LTA1LTMxICAgICAgICAgICAgICAgIDAuMDE1NiAgICAtMC4wMDE1ICAgICAgICAgICAgICAgIDAuMDIzMyAgICAgICAgICAgMC4wMzE1ICAgICAgICAgICAgICAgIDAuMDE4OVxuMTk5Ny0wNi0zMCAgICAgICAgICAgICAgICAwLjAyMTIgICAgIDAuMDA4NSAgICAgICAgICAgICAgICAwLjAyMTcgICAgICAgICAgIDAuMDU4MSAgICAgICAgICAgICAgICAwLjAxNjVcbiAgICAgICAgICAgRXZlbnQgRHJpdmVuIEZpeGVkIEluY29tZSBBcmJpdHJhZ2UgR2xvYmFsIE1hY3JvIExvbmcvU2hvcnQgRXF1aXR5IE1lcmdlciBBcmJpdHJhZ2UgUmVsYXRpdmUgVmFsdWVcbjE5OTctMDEtMzEgICAgICAgMC4wMjEzICAgICAgICAgICAgICAgICAwLjAxOTEgICAgICAgMC4wNTczICAgICAgICAgICAgMC4wMjgxICAgICAgICAgICAwLjAxNTAgICAgICAgICAwLjAxODBcbjE5OTctMDItMjggICAgICAgMC4wMDg0ICAgICAgICAgICAgICAgICAwLjAxMjIgICAgICAgMC4wMTc1ICAgICAgICAgICAtMC4wMDA2ICAgICAgICAgICAwLjAwMzQgICAgICAgICAwLjAxMThcbjE5OTctMDMtMzEgICAgICAtMC4wMDIzICAgICAgICAgICAgICAgICAwLjAxMDkgICAgICAtMC4wMTE5ICAgICAgICAgICAtMC4wMDg0ICAgICAgICAgICAwLjAwNjAgICAgICAgICAwLjAwMTBcbjE5OTctMDQtMzAgICAgICAtMC4wMDA1ICAgICAgICAgICAgICAgICAwLjAxMzAgICAgICAgMC4wMTcyICAgICAgICAgICAgMC4wMDg0ICAgICAgICAgIC0wLjAwMDEgICAgICAgICAwLjAxMjJcbjE5OTctMDUtMzEgICAgICAgMC4wMzQ2ICAgICAgICAgICAgICAgICAwLjAxMTggICAgICAgMC4wMTA4ICAgICAgICAgICAgMC4wMzk0ICAgICAgICAgICAwLjAxOTcgICAgICAgICAwLjAxNzNcbjE5OTctMDYtMzAgICAgICAgMC4wMjU4ICAgICAgICAgICAgICAgICAwLjAxMDggICAgICAgMC4wMjE4ICAgICAgICAgICAgMC4wMjIzICAgICAgICAgICAwLjAyMzEgICAgICAgICAwLjAxOThcbiAgICAgICAgICAgU2hvcnQgU2VsbGluZyBGdW5kcyBvZiBGdW5kc1xuMTk5Ny0wMS0zMSAgICAgICAtMC4wMTY2ICAgICAgICAgMC4wMzE3XG4xOTk3LTAyLTI4ICAgICAgICAwLjA0MjYgICAgICAgICAwLjAxMDZcbjE5OTctMDMtMzEgICAgICAgIDAuMDc3OCAgICAgICAgLTAuMDA3N1xuMTk5Ny0wNC0zMCAgICAgICAtMC4wMTI5ICAgICAgICAgMC4wMDA5XG4xOTk3LTA1LTMxICAgICAgIC0wLjA3MzcgICAgICAgICAwLjAyNzVcbjE5OTctMDYtMzAgICAgICAgLTAuMDA2NSAgICAgICAgIDAuMDIyNVxuIn0= -->
+<pre><code>           Convertible Arbitrage CTA Global Distressed Securities Emerging Markets Equity Market Neutral
+1997-01-31                0.0119     0.0393                0.0178           0.0791                0.0189
+1997-02-28                0.0123     0.0298                0.0122           0.0525                0.0101
+1997-03-31                0.0078    -0.0021               -0.0012          -0.0120                0.0016
+1997-04-30                0.0086    -0.0170                0.0030           0.0119                0.0119
+1997-05-31                0.0156    -0.0015                0.0233           0.0315                0.0189
+1997-06-30                0.0212     0.0085                0.0217           0.0581                0.0165
+           Event Driven Fixed Income Arbitrage Global Macro Long/Short Equity Merger Arbitrage Relative Value
+1997-01-31       0.0213                 0.0191       0.0573            0.0281           0.0150         0.0180
+1997-02-28       0.0084                 0.0122       0.0175           -0.0006           0.0034         0.0118
+1997-03-31      -0.0023                 0.0109      -0.0119           -0.0084           0.0060         0.0010
+1997-04-30      -0.0005                 0.0130       0.0172            0.0084          -0.0001         0.0122
+1997-05-31       0.0346                 0.0118       0.0108            0.0394           0.0197         0.0173
+1997-06-30       0.0258                 0.0108       0.0218            0.0223           0.0231         0.0198
+           Short Selling Funds of Funds
+1997-01-31       -0.0166         0.0317
+1997-02-28        0.0426         0.0106
+1997-03-31        0.0778        -0.0077
+1997-04-30       -0.0129         0.0009
+1997-05-31       -0.0737         0.0275
+1997-06-30       -0.0065         0.0225</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
 </div>
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUXVhbnRpdGF0aXZlIEZpbmFuY2UgTm90ZXMiCmF1dGhvcjogIkJlbmphbWluIEJ1cmNoIgpvdXRwdXQ6CiAgaHRtbF9ub3RlYm9vazogCiAgICB0b2M6IHllcwogIGh0bWxfZG9jdW1lbnQ6CiAgICB0b2M6IHllcwogICAgdG9jX2Zsb2F0OiB5ZXMKLS0tCgojIFRpbWUgU2VyaWVzCgojIyBMaWJyYXJpZXMKCiogeHRzIC0gdGltZSBzZXJpZXMgaW5kZXggKyBtYXRyaXggb2JqZWN0OyBhcy54dHMgbG9va3MgbGlrZSBhIHZlcnkgdXNlZnVsIGZ1bmN0aW9uCiogem9vCiogUGVyZm9ybWFuY2VBbmFseXRpY3MgLSBFY29ub21ldHJpYyB0b29scwoKIyMgTm90ZXMKCiogVXNlIHNhdmVSRFMgZm9yIHpvbyBvYmplY3RzCiogem9vIGhhcyByZWFkIGFuZCB3cml0ZSBmdW5jdGlvbnMKCiMjIyB4dHMKCiogeHRzIGZ1bmN0aW9ucyAiZmlyc3QiIGFuZCAibGFzdCIgYXJlIGFuYWxvZ291cyB0byBoZWFkIGFuZCB0YWlsIGUuZy4gbGFzdChkYXRhLCAiNSBtb250aHMiKQoqICJtZXJnZSIgYWxsb3cgZm9yIGRhdGFiYXNlIHN0eWxlIGpvaW5zCiogdHMgYW5kIHpvbyBkZWZpbmUgbGFnIHdpdGggdGhlIG9wcG9zaXRlIHNpZ24gb2YgeHRzCiogImxhZyIgYW5kICJkaWZmIiBmdW5jdGlvbnMgYWxsb3cgZm9yIGNvbXBsZXggbWF0aAoqIHRvLnBlcmlvZCB3aWxsIGdpdmUgT0hMQyB2YWx1ZXMgKE9wZW4sIEhpZ2gsIExvdywgQ2xvc2UpIGJ5IGRlZmF1bHQKKiAicm9sbGFwcGx5IiBjb2xhY3VsYXRlZCByb2xsaW5nIHN1bXMsIG1lYW5zLCBldGMuCiogaW5kZXggaXMgc2Vjb25kcyBmcm9tIDE5NzAtMDEtMDEKKiAicGVyaW9kaWNpdHkiIC0gZXN0aW1hdGVkIHN0dWN0dXJlIG9mIHRpbWVzZXJpZXMgZGF0YQoqICJhbGlnbi50aW1lIiAtIHJvdW5kIHRvIHNwZWNpZmllZCBwZXJpb2RpY2l0eQoqIGdldCB3ZWVrZW5kczogaW5kZXggPC0gd2hpY2goLmluZGV4d2RheSh4KSA9PSAwIHwgLmluZGV4d2RheSh4KSA9PSA2KQ==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlF1YW50aXRhdGl2ZSBGaW5hbmNlIE5vdGVzIg0KYXV0aG9yOiAiQmVuamFtaW4gQnVyY2giDQpvdXRwdXQ6DQogIGh0bWxfbm90ZWJvb2s6IA0KICAgIHRvYzogeWVzDQogIGh0bWxfZG9jdW1lbnQ6DQogICAgdG9jOiB5ZXMNCiAgICB0b2NfZmxvYXQ6IHllcw0KLS0tDQoNCiMgVGltZSBTZXJpZXMNCg0KIyMgTGlicmFyaWVzDQoNCiogeHRzIC0gdGltZSBzZXJpZXMgaW5kZXggKyBtYXRyaXggb2JqZWN0OyBhcy54dHMgbG9va3MgbGlrZSBhIHZlcnkgdXNlZnVsIGZ1bmN0aW9uDQoqIHpvbw0KKiBQZXJmb3JtYW5jZUFuYWx5dGljcyAtIEVjb25vbWV0cmljIHRvb2xzDQoNCiMjIE5vdGVzDQoNCiogVXNlIHNhdmVSRFMgZm9yIHpvbyBvYmplY3RzDQoqIHpvbyBoYXMgcmVhZCBhbmQgd3JpdGUgZnVuY3Rpb25zDQoNCiMjIyB4dHMNCg0KKiB4dHMgZnVuY3Rpb25zICJmaXJzdCIgYW5kICJsYXN0IiBhcmUgYW5hbG9nb3VzIHRvIGhlYWQgYW5kIHRhaWwgZS5nLiBsYXN0KGRhdGEsICI1IG1vbnRocyIpDQoqICJtZXJnZSIgYWxsb3cgZm9yIGRhdGFiYXNlIHN0eWxlIGpvaW5zDQoqIHRzIGFuZCB6b28gZGVmaW5lIGxhZyB3aXRoIHRoZSBvcHBvc2l0ZSBzaWduIG9mIHh0cw0KKiAibGFnIiBhbmQgImRpZmYiIGZ1bmN0aW9ucyBhbGxvdyBmb3IgY29tcGxleCBtYXRoDQoqIHRvLnBlcmlvZCB3aWxsIGdpdmUgT0hMQyB2YWx1ZXMgKE9wZW4sIEhpZ2gsIExvdywgQ2xvc2UpIGJ5IGRlZmF1bHQNCiogInJvbGxhcHBseSIgY29sYWN1bGF0ZWQgcm9sbGluZyBzdW1zLCBtZWFucywgZXRjLg0KKiBpbmRleCBpcyBzZWNvbmRzIGZyb20gMTk3MC0wMS0wMQ0KKiAicGVyaW9kaWNpdHkiIC0gZXN0aW1hdGVkIHN0dWN0dXJlIG9mIHRpbWVzZXJpZXMgZGF0YQ0KKiAiYWxpZ24udGltZSIgLSByb3VuZCB0byBzcGVjaWZpZWQgcGVyaW9kaWNpdHkNCiogZ2V0IHdlZWtlbmRzOiBpbmRleCA8LSB3aGljaCguaW5kZXh3ZGF5KHgpID09IDAgfCAuaW5kZXh3ZGF5KHgpID09IDYpDQoNCiogYW4gZXhhbXBsZQ0KYGBge3J9DQpsaWJyYXJ5KHh0cykNCmxpYnJhcnkoUGVyZm9ybWFuY2VBbmFseXRpY3MpDQoNCiMgbW9udGhseSB4dHMgaGVkZ2UgZnVuZCBpbmRleCByZXR1cm5zDQpkYXRhKGVkaGVjKQ0KDQojIDYgbW9udGggc2xpY2UNCmVkaGVjWyIxOTk3MDEvMTk5NzA2Il0NCg0KYGBg</div>
 
 
 

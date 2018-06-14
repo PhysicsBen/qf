@@ -34,3 +34,16 @@ output:
 * "periodicity" - estimated stucture of timeseries data
 * "align.time" - round to specified periodicity
 * get weekends: index <- which(.indexwday(x) == 0 | .indexwday(x) == 6)
+
+* an example
+```{r}
+library(xts)
+library(PerformanceAnalytics)
+
+# monthly xts hedge fund index returns
+data(edhec)
+
+# 6 month slice
+edhec["199701/199706"]
+
+```
